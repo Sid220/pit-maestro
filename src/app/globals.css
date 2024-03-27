@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-2xl;
+        @apply mb-3;
+        @apply mt-3;
+    }
+    h2 {
+        @apply text-xl;
+        @apply mb-1;
+        @apply mt-1;
+    }
+    button {
+        @apply p-2;
+        @apply bg-gray-500 !important;
+        @apply rounded-md;
+        @apply hover:bg-gray-600;
+        @apply text-white;
+    }
+    .primary {
+        @apply p-2;
+        @apply bg-blue-500 !important;
+        @apply rounded-md;
+        @apply hover:bg-blue-600;
+        @apply text-white;
+    }
+    input[type="text"], input[type="number"] {
+        @apply p-2;
+        @apply bg-gray-100;
+        @apply rounded-md;
+    }
+    span.error {
+        @apply text-red-600;
+    }
+    label {
+        @apply p-2
+    }
+}
+
