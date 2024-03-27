@@ -103,7 +103,7 @@ export default function One() {
                 <div className="col-span-2">
                     <iframe className="w-[60vw] h-96"
                             frameBorder="0" allowFullScreen={true} scrolling="no"
-                            src={"https://player.twitch.tv/?channel=" + streamChannel + "&parent=localhost"}></iframe>
+                            src={"https://player.twitch.tv/?channel=" + streamChannel + "&parent=pit-maestro.vercel.app"}></iframe>
                 </div>
             </div>
             {matches.map((a: any, index) => {
