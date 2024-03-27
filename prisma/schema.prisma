@@ -6,15 +6,15 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model PitList {
-  id Int @id @default(autoincrement())
-  signed String
-  event String
-  match String
-  checks String
+  id           Int       @id @default(autoincrement())
+  signed       String
+  event        String
+  match        String
+  checks       String
   submitted_at DateTime?
 }
