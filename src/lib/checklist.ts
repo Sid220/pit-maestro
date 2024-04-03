@@ -35,8 +35,11 @@ export const checklist = [
 
     new Check(CheckTypes.BOOL, 'Driving'),
     new Check(CheckTypes.BOOL, 'Intake Note'),
-    new Check(CheckTypes.BOOL, 'Amp'),
+    new Check(CheckTypes.BOOL, 'Amp shot'),
+    new Check(CheckTypes.BOOL, 'Outtake note from Shield position'),
     new Check(CheckTypes.BOOL, 'Climb'),
+    new Check(CheckTypes.BOOL, 'Fender shot'),
+    new Check(CheckTypes.BOOL, 'Elevator shot'),
     new Check(CheckTypes.BOOL, 'Smart Intake'),
 
 
