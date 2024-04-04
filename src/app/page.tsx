@@ -40,6 +40,7 @@ export default function Home() {
                     <option value="qm">Qual</option>
                     <option value="sf">Semi</option>
                     <option value="f1m">Final</option>
+                    <option value="pr">Practice</option>
                 </select> <input type="number" name="m_num" required={true}/>
                 <button type="submit">Set</button>
             </form>
