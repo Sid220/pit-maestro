@@ -88,14 +88,18 @@ export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateActio
                                     }}/>
                                 </span>
                             } else if (check.mode == CheckTypes.STRING) {
-                                return <label>{check.value}: <input type="text" value={(checks[index].state as string)}
-                                                                    onChange={(e) => {
-                                                                        setCheckList(checks.map(((item, c_index) =>
-                                                                            c_index === index
-                                                                                ? new Check(CheckTypes.STRING, check.value, (e.target as HTMLInputElement).value)
-                                                                                : item)))
-                                                                    }}
-                                                                    disabled={submitted}/></label>
+                                return <label>{check.value}: <textarea value={(checks[index].state as string)}
+                                                                       onChange={(e) => {
+                                                                           setCheckList(checks.map(((item, c_index) =>
+                                                                               c_index === index
+                                                                                   ? new Check(CheckTypes.STRING, check.value, (e.target as HTMLTextAreaElement).value)
+                                                                                   : item)))
+                                                                       }}
+                                                                       style={{
+                                                                           height: "75px",
+                                                                           width: "75%"
+                                                                       }}
+                                                                       disabled={submitted}/></label>
                             }
                         })()}
                     </span>)

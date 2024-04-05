@@ -27,7 +27,7 @@
         @apply hover:bg-blue-600;
         @apply text-white;
     }
-    input[type="text"], input[type="number"] {
+    input[type="text"], input[type="number"], textarea {
         @apply p-2;
         @apply bg-gray-100;
         @apply rounded-md;

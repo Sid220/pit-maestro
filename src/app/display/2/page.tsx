@@ -75,6 +75,7 @@ export default function One() {
                     <option value="qm">Qual</option>
                     <option value="sf">Semi</option>
                     <option value="f1m">Final</option>
+                    <option value="pr">Practice</option>
                 </select> <input type="number" className="text-black" name="m_num" required={true}/>
                 <button type="submit">Set</button>
             </form>}
@@ -83,6 +84,7 @@ export default function One() {
                     <option value="qm">Qual</option>
                     <option value="sf">Semi</option>
                     <option value="f1m">Final</option>
+                    <option value="pr">Practice</option>
                 </select> <input type="number" className="text-black" name="m_num"
                                  defaultValue={matches[0]["match_number"]} required={true}/>
                 <button type="submit">Set</button>
