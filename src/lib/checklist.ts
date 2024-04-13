@@ -54,6 +54,7 @@ export const checklist = [
     new Check(CheckTypes.BOOL, 'Swerve mounting bolts secure'),
     new Check(CheckTypes.BOOL, 'Check tread wear'),
     new Check(CheckTypes.BOOL, 'Check wheel wobble'),
+    new Check(CheckTypes.BOOL, 'Check wheel fenders'),
 
     new Check(CheckTypes.HEADER_2, 'Intake'),
 
@@ -73,6 +74,8 @@ export const checklist = [
     new Check(CheckTypes.BOOL, 'Hard stops intact'),
     new Check(CheckTypes.BOOL, 'Climbing hooks intact'),
     new Check(CheckTypes.BOOL, 'Bolt in 2x1 isn\'t loose'),
+    new Check(CheckTypes.BOOL, 'Elevator motor gearbox good'),
+    new Check(CheckTypes.BOOL, 'Elevator motor brackets good'),
 
     new Check(CheckTypes.HEADER_2, 'Shooter'),
 
@@ -101,6 +104,7 @@ export const checklist = [
     new Check(CheckTypes.BOOL, 'Sensor screws tight'),
     new Check(CheckTypes.BOOL, 'Limelight bolts secure'),
     new Check(CheckTypes.BOOL, 'Limelight on'),
+    new Check(CheckTypes.BOOL, 'Check wago connections'),
 
     new Check(CheckTypes.STRING, 'Notes')
 ]

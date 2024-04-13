@@ -32,7 +32,7 @@ function updateRankings(setRankings: any) {
 
 export default function One() {
     let rankings, setRankings, ratings, setRatings, matches, setMatches, matchesPlayed, setMatchesPlayed;
-    let streamChannel = 'nefirst_blue';
+    let streamChannel = 'firstinspires_milstein';
     [rankings, setRankings] = useState([]);
     [matches, setMatches] = useState([]);
     [ratings, setRatings] = useState([0, 0, 0]);
