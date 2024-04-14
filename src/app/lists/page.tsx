@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import {config} from "@/lib/conf";
 import Link from "next/link";
-
+import { unstable_noStore as noStore } from 'next/cache';
 export const revalidate = 0;
 
 async function getEventDate(event: string) {
@@ -50,6 +50,7 @@ async function getList() {
 }
 
 export default async function Page() {
+    noStore();
     const data = await getList();
     return (
         <div>
