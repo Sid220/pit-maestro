@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma";
 import {config} from "@/lib/conf";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 async function getEventDate(event: string) {
     const data = await (await fetch(`https://www.thebluealliance.com/api/v3/event/${event}/simple`, {
         headers: {
