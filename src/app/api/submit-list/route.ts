@@ -9,11 +9,15 @@ export async function POST(
 
     let matchInfo = (data.matchInfo as string)
     let signed = (data.signed as string)
+    let event = config.event;
+    if (data.event !== undefined) {
+        event = (data.event as string);
+    }
 
     let update = await prisma.pitList.updateMany({
         where: {
             match: matchInfo,
-            event: config.event
+            event: event
         },
         data: {
             signed: signed,

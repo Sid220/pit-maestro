@@ -10,11 +10,16 @@ export async function POST(
 
     let matchInfo = (data.matchInfo as string)
     let checks = (data.checks as string)
+    let event = config.event;
+
+    if (data.event !== undefined) {
+       event = (data.event as string);
+    }
 
     let update = await prisma.pitList.updateMany({
         where: {
             match: matchInfo,
-            event: config.event
+            event: event
         },
         data: {
             checks: JSON.stringify(checks)
@@ -24,7 +29,7 @@ export async function POST(
     let signed: PitList | null | string = await prisma.pitList.findFirst({
         where: {
             match: matchInfo,
-            event: config.event
+            event: event
         }
     })
 
@@ -35,6 +40,7 @@ export async function POST(
     return NextResponse.json({
         "matchInfo": matchInfo,
         "updated": update.count.toString(),
-        "signed": signed
+        "signed": signed,
+        "event": event,
     });
 }

@@ -10,11 +10,11 @@ export async function GET(
     return NextResponse.json({})
 }
 
-async function getOrCreate(matchInfo: string): Promise<PitList> {
+async function getOrCreate(matchInfo: string, event: string): Promise<PitList> {
     const data = await prisma.pitList.findFirst({
         where: {
             match: matchInfo,
-            event: config.event
+            event: event
         }
     });
 
@@ -37,20 +37,24 @@ export async function POST(
 ) {
     const data = await request.formData();
     let matchInfo = "";
+    let matchEvent = config.event;
     if (data.get("m_type") !== null && data.get("m_num") !== null) {
         matchInfo = (data.get("m_type") as string) + (data.get("m_num") as string);
-    }
-    else if (data.get("match_info") !== null) {
+    } else if (data.get("match_info") !== null) {
         matchInfo = (data.get("match_info") as string);
-    }
-    else {
+    } else {
         return NextResponse.error();
     }
 
-    const row = await getOrCreate(matchInfo);
+    if (data.get("m_event") !== null) {
+        matchEvent = (data.get("m_event") as string);
+    }
+
+    const row = await getOrCreate(matchInfo, matchEvent);
     return NextResponse.json({
         "id": row.id,
         "matchInfo": matchInfo,
+        "event": row.event,
         "checks": row.checks,
         "signed": row.signed
     });

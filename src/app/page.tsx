@@ -6,9 +6,10 @@ import {GetStaticProps} from "next";
 import {FormEvent, useEffect, useReducer, useState} from "react";
 import {renderForm, updateForm} from "@/lib/renderForm";
 import {Check, checklist, fromJSONString} from "@/lib/checklist";
+import {config} from "@/lib/conf";
 
 export default function Home() {
-    const [matchInfo, setMatchInfo]  = useState("");
+    const [matchInfo, setMatchInfo] = useState("");
     const [checkList, setCheckList] = useState<Check[]>([]);
     const [submitted, setSubmitted] = useState(false);
     const [signed, setSigned] = useState("")
@@ -26,11 +27,12 @@ export default function Home() {
         setMatchInfo(data.matchInfo);
         setCheckList(fromJSONString(data.checks))
         setSigned(data.signed)
+        console.log(data)
     }
 
     useEffect(() => {
-        updateForm(matchInfo, checkList, setSubmitted);
-    },[matchInfo, checkList, submitted])
+        updateForm(matchInfo, config.event, checkList, setSubmitted);
+    }, [matchInfo, checkList, submitted])
 
     return (
         <div>

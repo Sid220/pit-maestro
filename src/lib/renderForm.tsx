@@ -1,8 +1,9 @@
 import {Check, CheckTypes, toJSONString} from "@/lib/checklist";
 import {Dispatch, FormEvent, SetStateAction, useEffect} from "react";
+import {config} from "@/lib/conf";
 
 
-export function updateForm(matchInfo: string, checks: Check[], setSubmitted: Dispatch<SetStateAction<boolean>>) {
+export function updateForm(matchInfo: string, event: string, checks: Check[], setSubmitted: Dispatch<SetStateAction<boolean>>) {
     let data = toJSONString(checks);
     const response = fetch('/api/update-list', {
         method: 'POST',
@@ -11,7 +12,8 @@ export function updateForm(matchInfo: string, checks: Check[], setSubmitted: Dis
         },
         body: JSON.stringify({
             "matchInfo": matchInfo,
-            "checks": checks
+            "checks": checks,
+            "event": event,
         })
     }).then((res) => {
         res.json().then((json) => {
@@ -25,7 +27,11 @@ export function updateForm(matchInfo: string, checks: Check[], setSubmitted: Dis
     })
 }
 
-export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateAction<Check[]>>, matchInfo: string, submitted: boolean, setSubmitted: Dispatch<SetStateAction<boolean>>, signed: string, setSigned: Dispatch<SetStateAction<string>>) {
+export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateAction<Check[]>>, matchInfo: string, submitted: boolean, setSubmitted: Dispatch<SetStateAction<boolean>>, signed: string, setSigned: Dispatch<SetStateAction<string>>, event?: string) {
+    let matchEvent = config.event;
+    if (event !== undefined) {
+        matchEvent = event;
+    }
     if (matchInfo == "") {
         return <p>Match not found/please select match</p>
     }
@@ -46,7 +52,8 @@ export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateActio
             },
             body: JSON.stringify({
                 "matchInfo": matchInfo,
-                "signed": signed
+                "signed": signed,
+                "event": matchEvent
             })
         }).then((res) => {
             res.json().then((json) => {
@@ -59,7 +66,7 @@ export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateActio
 
     return (
         <div>
-            <p>Match: {matchInfo}</p>
+            <p>Match: {matchInfo} @ {matchEvent}</p>
             <form onSubmit={onSubmit}>
                 {checks.map((check, index) => {
                     return (<span key={index}>
