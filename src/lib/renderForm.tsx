@@ -95,7 +95,7 @@ export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateActio
                                     }}/>
                                 </span>
                             } else if (check.mode == CheckTypes.STRING) {
-                                return <label>{check.value}: <textarea value={(checks[index].state as string)}
+                                return <><label>{check.value}: <textarea value={(checks[index].state as string)}
                                                                        onChange={(e) => {
                                                                            setCheckList(checks.map(((item, c_index) =>
                                                                                c_index === index
@@ -106,7 +106,7 @@ export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateActio
                                                                            height: "75px",
                                                                            width: "75%"
                                                                        }}
-                                                                       disabled={submitted}/></label>
+                                                                       disabled={submitted}/></label><br /></>
                             }
                         })()}
                     </span>)

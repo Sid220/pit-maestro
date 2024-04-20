@@ -105,7 +105,11 @@ export const checklist = [
     new Check(CheckTypes.BOOL, 'Limelight bolts secure'),
     new Check(CheckTypes.BOOL, 'Limelight on'),
     new Check(CheckTypes.BOOL, 'Check wago connections'),
+    new Check(CheckTypes.BOOL, "Limelight hot glue in tact"),
 
+    new Check(CheckTypes.STRING, "Battery Number"),
+    new Check(CheckTypes.STRING, "Battery Charge (%)"),
+    new Check(CheckTypes.STRING, "Battery Resistance"),
     new Check(CheckTypes.STRING, 'Notes')
 ]
 
