@@ -18,4 +18,11 @@ model PitList {
   match        String
   checks       String
   submitted_at DateTime?
+  modified_at  DateTime  @default(now())
+}
+
+model Config {
+  id    Int    @id @default(autoincrement())
+  team  Int
+  event String
 }

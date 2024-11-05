@@ -10,7 +10,7 @@ import {
     useRef,
     useState
 } from "react";
-import {config} from "@/lib/conf";
+import {loadConfig} from "@/lib/conf";
 import {Check, CheckTypes, fromJSONString} from "@/lib/checklist";
 import {updateMatches} from "@/lib/updateMatches";
 
@@ -68,7 +68,7 @@ export default function One() {
 
     return (
         <div className="m-6">
-            <div>Pit Maestro Pit Hawk by Team 2713 - Team {config.team} @ {config.event}</div>
+            <div>Pit Maestro Pit Hawk by Team 2713 - Team {loadConfig().team} @ {loadConfig().event}</div>
 
             {matches.length < 1 && <form onSubmit={onSubmit}>
                 <select name="m_type" required={true} className="text-black">

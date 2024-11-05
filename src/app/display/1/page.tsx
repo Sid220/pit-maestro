@@ -1,6 +1,6 @@
 'use client';
 
-import {config} from "@/lib/conf";
+import {loadConfig} from "@/lib/conf";
 import {useEffect, useState} from "react";
 import {updateMatches} from "@/lib/updateMatches";
 
@@ -19,9 +19,9 @@ function getTimeString(date: Date) {
 }
 
 function updateRankings(setRankings: any) {
-    fetch("https://www.thebluealliance.com/api/v3/event/" + config.event + "/rankings", {
+    fetch("https://www.thebluealliance.com/api/v3/event/" + loadConfig().event + "/rankings", {
         headers: {
-            "X-TBA-Auth-Key": config.apiKey
+            "X-TBA-Auth-Key": loadConfig().apiKey
         }
     }).then(r => {
         r.json().then((j: any) => {
@@ -49,7 +49,7 @@ export default function One() {
 
     useEffect(() => {
         let record = rankings.find((a: any) => {
-            return a["team_key"] === ("frc" + config.team)
+            return a["team_key"] === ("frc" + loadConfig().team)
         });
         if (typeof record !== "undefined") {
             setRatings([record["record"]["wins"], record["record"]["losses"], record["record"]["ties"]])
@@ -58,22 +58,22 @@ export default function One() {
     }, [rankings, setRatings, setMatchesPlayed]);
 
     return (<div>
-            <div>Pit Maestro Pit Hawk by Team 2713 - Team {config.team} @ {config.event}</div>
+            <div>Pit Maestro Pit Hawk by Team 2713 - Team {loadConfig().team} @ {loadConfig().event}</div>
             <div className="grid grid-cols-3">
                 <div>
                     {(matches.length > 0) && (<div
                         className={"bg-gray-800 rounded-md p-4 m-2 flex gap-2 " + (getTimeString(new Date(matches[0]["time"] * 1000))[1] ? "bg-red-800 animate-pulse" : "")}>
-                        <span>{(matches[0] as any)["key"].replace(config.event + "_", "")}</span>
+                        <span>{(matches[0] as any)["key"].replace(loadConfig().event + "_", "")}</span>
                         <div className="bg-red-500 w-1/3 flex justify-center gap-6 rounded-md">
                             {(matches[0] as any)["alliances"]["red"]["team_keys"].map((team: any, index: number) =>
                                 <span
-                                    className={(team === "frc" + config.team ? "underline font-extrabold" : "")}
+                                    className={(team === "frc" + loadConfig().team ? "underline font-extrabold" : "")}
                                     key={index}>{team.replace("frc", "")}</span>)}
                         </div>
                         <div className="bg-blue-500 w-1/3 flex justify-center gap-6 rounded-md">
                             {(matches[0] as any)["alliances"]["blue"]["team_keys"].map((team: any, index: number) =>
                                 <span
-                                    className={(team === "frc" + config.team ? "underline font-extrabold" : "")}
+                                    className={(team === "frc" + loadConfig().team ? "underline font-extrabold" : "")}
                                     key={index}>{team.replace("frc", "")}</span>)}
                         </div>
                         {getTimeString(new Date(matches[0]["time"] * 1000))[0]}
@@ -83,9 +83,9 @@ export default function One() {
                         return (<div key={index}>{(() => {
                             if (index < 5) {
                                 return (<div
-                                    className={((a["team_key"] === "frc" + config.team) ? "bg-green-600" : "bg-gray-800") + " rounded-md p-2 m-2"}>{index + 1}
+                                    className={((a["team_key"] === "frc" + loadConfig().team) ? "bg-green-600" : "bg-gray-800") + " rounded-md p-2 m-2"}>{index + 1}
                                     . {a["team_key"].replace("frc", "")}</div>)
-                            } else if (a["team_key"] === ("frc" + config.team)) {
+                            } else if (a["team_key"] === ("frc" + loadConfig().team)) {
                                 return (<>
                                         <div>...</div>
                                         <div className="bg-gray-800 rounded-md p-2 m-2">{index}
@@ -109,15 +109,15 @@ export default function One() {
             {matches.map((a: any, index) => {
                 return <div key={index}
                             className={"bg-gray-800 rounded-md p-4 m-2 flex gap-2 " + (getTimeString(new Date(a["time"] * 1000))[1] ? "bg-red-800 animate-pulse" : "")}>
-                    <span>{a["key"].replace(config.event + "_", "")}</span>
+                    <span>{a["key"].replace(loadConfig().event + "_", "")}</span>
                     <div className="bg-red-500 w-1/3 flex justify-center gap-6 rounded-md">
                         {a["alliances"]["red"]["team_keys"].map((team: any, index: number) => <span
-                            className={(team === "frc" + config.team ? "underline font-extrabold" : "")}
+                            className={(team === "frc" + loadConfig().team ? "underline font-extrabold" : "")}
                             key={index}>{team.replace("frc", "")}</span>)}
                     </div>
                     <div className="bg-blue-500 w-1/3 flex justify-center gap-6 rounded-md">
                         {a["alliances"]["blue"]["team_keys"].map((team: any, index: number) => <span
-                            className={(team === "frc" + config.team ? "underline font-extrabold" : "")}
+                            className={(team === "frc" + loadConfig().team ? "underline font-extrabold" : "")}
                             key={index}>{team.replace("frc", "")}</span>)}
                     </div>
                     {getTimeString(new Date(a["time"] * 1000))[0]}

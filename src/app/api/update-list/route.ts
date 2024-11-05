@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
-import {config} from "@/lib/conf";
+import {loadConfigServer} from "@/lib/conf";
 import {PitList} from "@prisma/client";
 
 export async function POST(
@@ -10,7 +10,7 @@ export async function POST(
 
     let matchInfo = (data.matchInfo as string)
     let checks = (data.checks as string)
-    let event = config.event;
+    let event = (await loadConfigServer()).event;
 
     if (data.event !== undefined) {
        event = (data.event as string);
@@ -22,7 +22,8 @@ export async function POST(
             event: event
         },
         data: {
-            checks: JSON.stringify(checks)
+            checks: JSON.stringify(checks),
+            modified_at: new Date()
         }
     })
 

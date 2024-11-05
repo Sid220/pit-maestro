@@ -54,6 +54,9 @@ export default function RootLayout({
                         <li>
                             <Link href="/display/2/" className="text-gray-900 hover:underline">Display/2</Link>
                         </li>
+                        <li>
+                            <Link href="/conf" className="text-gray-900 hover:underline">Config</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

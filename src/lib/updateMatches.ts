@@ -1,9 +1,9 @@
-import {config} from "@/lib/conf";
+import {loadConfig} from "@/lib/conf";
 
 export function updateMatches(setMatches: any) {
-    fetch("https://www.thebluealliance.com/api/v3/team/frc" + config.team + "/event/" + config.event + "/matches", {
+    fetch("https://www.thebluealliance.com/api/v3/team/frc" + loadConfig().team + "/event/" + loadConfig().event + "/matches", {
         headers: {
-            "X-TBA-Auth-Key": config.apiKey
+            "X-TBA-Auth-Key": loadConfig().apiKey
         }
     }).then(r => {
         r.json().then((j: any) => {

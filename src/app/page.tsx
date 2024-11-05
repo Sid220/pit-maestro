@@ -6,7 +6,7 @@ import {GetStaticProps} from "next";
 import {FormEvent, useEffect, useReducer, useState} from "react";
 import {renderForm, updateForm} from "@/lib/renderForm";
 import {Check, checklist, fromJSONString} from "@/lib/checklist";
-import {config} from "@/lib/conf";
+import {loadConfig} from "@/lib/conf";
 
 export default function Home() {
     const [matchInfo, setMatchInfo] = useState("");
@@ -31,7 +31,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-        updateForm(matchInfo, config.event, checkList, setSubmitted);
+        updateForm(matchInfo, loadConfig().event!, checkList, setSubmitted);
     }, [matchInfo, checkList, submitted])
 
     return (

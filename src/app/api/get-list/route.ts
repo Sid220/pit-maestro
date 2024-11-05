@@ -1,8 +1,9 @@
 import {NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
-import {config} from "@/lib/conf";
+import {loadConfigServer} from "@/lib/conf";
 import {PitList} from "@prisma/client";
 import {checklist, toJSONString} from "@/lib/checklist";
+
 
 export async function GET(
     request: Request
@@ -22,7 +23,7 @@ async function getOrCreate(matchInfo: string, event: string): Promise<PitList> {
         return prisma.pitList.create({
             data: {
                 match: matchInfo,
-                event: config.event,
+                event: (await loadConfigServer()).event,
                 signed: "",
                 checks: toJSONString(checklist)
             }
@@ -37,7 +38,7 @@ export async function POST(
 ) {
     const data = await request.formData();
     let matchInfo = "";
-    let matchEvent = config.event;
+    let matchEvent = (await loadConfigServer()).event;
     if (data.get("m_type") !== null && data.get("m_num") !== null) {
         matchInfo = (data.get("m_type") as string) + (data.get("m_num") as string);
     } else if (data.get("match_info") !== null) {

@@ -1,6 +1,6 @@
 import {Check, CheckTypes, toJSONString} from "@/lib/checklist";
 import {Dispatch, FormEvent, SetStateAction, useEffect} from "react";
-import {config} from "@/lib/conf";
+import {loadConfig} from "@/lib/conf";
 
 
 export function updateForm(matchInfo: string, event: string, checks: Check[], setSubmitted: Dispatch<SetStateAction<boolean>>) {
@@ -28,7 +28,7 @@ export function updateForm(matchInfo: string, event: string, checks: Check[], se
 }
 
 export function renderForm(checks: Check[], setCheckList: Dispatch<SetStateAction<Check[]>>, matchInfo: string, submitted: boolean, setSubmitted: Dispatch<SetStateAction<boolean>>, signed: string, setSigned: Dispatch<SetStateAction<string>>, event?: string) {
-    let matchEvent = config.event;
+    let matchEvent: string = loadConfig().event!;
     if (event !== undefined) {
         matchEvent = event;
     }
