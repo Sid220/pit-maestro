@@ -1,36 +1,30 @@
-import prisma from "@/lib/prisma";
+'use client';
+
+import {loadConfigServer} from "@/lib/confServer";
 
 export const apiKey = "uSqAJfiJwCciUTUQGRKjcSqdnq2p33fUWBseQePtdjS7bNvtbaPZ0nh7yUPdVbi0";
 
-const config = {
+const config: {
+    event: string | null,
+    team: string | null,
+    apiKey: string
+} = {
     event: null,
     team: null,
     apiKey: apiKey
-}
+};
 
 export function loadConfig() {
-    if (config.event == null) {
-        let xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
 
-        xhttp.open("GET", "/api/get-conf", false);
-        xhttp.send();
+    xhttp.open("GET", "/api/get-conf", false);
+    xhttp.send();
 
-        let j = JSON.parse(xhttp.responseText);
+    let j = JSON.parse(xhttp.responseText);
 
-        config.event = j.event;
-        config.team = j.team;
+    config.event = j.event;
+    config.team = j.team;
 
-        return config;
-    } else {
-        return config;
-    }
-}
-
-export async function loadConfigServer() {
-    return (await prisma.config.findFirst({
-        where: {
-            id: 1
-        }
-    }))!;
+    return config;
 }
 

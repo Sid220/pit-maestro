@@ -25,6 +25,7 @@ function updateRankings(setRankings: any) {
         }
     }).then(r => {
         r.json().then((j: any) => {
+            console.log(j);
             setRankings(j["rankings"].sort((m1: any, m2: any) => m1['rank'] - m2['rank']));
         })
     })
@@ -32,7 +33,7 @@ function updateRankings(setRankings: any) {
 
 export default function One() {
     let rankings, setRankings, ratings, setRatings, matches, setMatches, matchesPlayed, setMatchesPlayed;
-    let streamChannel = 'firstinspires_milstein';
+    let streamChannel = 'nefirst_blue';
     [rankings, setRankings] = useState([]);
     [matches, setMatches] = useState([]);
     [ratings, setRatings] = useState([0, 0, 0]);
@@ -106,6 +107,7 @@ export default function One() {
                             src={"https://player.twitch.tv/?channel=" + streamChannel + "&parent=pit-maestro.vercel.app"}></iframe>
                 </div>
             </div>
+            <iframe src={`https://frc.nexus/en/event/${loadConfig().event}/team/${loadConfig().team}`} className={"w-full h-[500px]"}/>
             {matches.map((a: any, index) => {
                 return <div key={index}
                             className={"bg-gray-800 rounded-md p-4 m-2 flex gap-2 " + (getTimeString(new Date(a["time"] * 1000))[1] ? "bg-red-800 animate-pulse" : "")}>

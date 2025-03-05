@@ -15,8 +15,7 @@ export class Check {
         this.value = value;
         if (typeof state !== "undefined") {
             this.state = state;
-        }
-        else {
+        } else {
             this.state = mode == CheckTypes.BOOL ? false : "";
         }
     }
@@ -34,78 +33,70 @@ export const checklist = [
     new Check(CheckTypes.HEADER_1, 'Kinetic Tests'),
 
     new Check(CheckTypes.BOOL, 'Driving'),
-    new Check(CheckTypes.BOOL, 'Intake Note'),
-    new Check(CheckTypes.BOOL, 'Amp shot'),
-    new Check(CheckTypes.BOOL, 'Outtake note from Shield position'),
-    new Check(CheckTypes.BOOL, 'Climb'),
-    new Check(CheckTypes.BOOL, 'Fender shot'),
-    new Check(CheckTypes.BOOL, 'Elevator shot'),
-    new Check(CheckTypes.BOOL, 'Smart Intake'),
-
+    new Check(CheckTypes.BOOL, 'L1-L4 setpoints correct'),
+    new Check(CheckTypes.BOOL, 'Intake and score coral'),
+    new Check(CheckTypes.BOOL, 'Intake algae high and low'),
+    new Check(CheckTypes.BOOL, 'Score algae processor and net'),
+    new Check(CheckTypes.BOOL, 'Climber deploy and retract'),
 
     new Check(CheckTypes.HEADER_1, 'Static Tests'),
-
 
     new Check(CheckTypes.HEADER_2, 'Chassis'),
 
     new Check(CheckTypes.BOOL, 'Bumpers set to correct colour'),
     new Check(CheckTypes.BOOL, 'Bumpers tightly secure'),
-    new Check(CheckTypes.BOOL, 'Swerve motors secure'),
+    new Check(CheckTypes.BOOL, 'Kraken motors secure'),
     new Check(CheckTypes.BOOL, 'Swerve mounting bolts secure'),
     new Check(CheckTypes.BOOL, 'Check tread wear'),
     new Check(CheckTypes.BOOL, 'Check wheel wobble'),
-    new Check(CheckTypes.BOOL, 'Check wheel fenders'),
 
-    new Check(CheckTypes.HEADER_2, 'Intake'),
+    new Check(CheckTypes.HEADER_2, 'Elevator And Pivot'),
 
     new Check(CheckTypes.BOOL, 'Check bolts'),
-    new Check(CheckTypes.BOOL, 'Make sure belts are not stripped'),
-    new Check(CheckTypes.BOOL, 'Make sure pulleys are not stripped'),
-    new Check(CheckTypes.BOOL, 'Motors properly secured'),
-    new Check(CheckTypes.BOOL, 'Rivets not sheared'),
-    new Check(CheckTypes.BOOL, 'Wipe rollers with IPA'),
-
-    new Check(CheckTypes.HEADER_2, 'Elevator'),
-
-    new Check(CheckTypes.BOOL, 'Check Bolts'),
     new Check(CheckTypes.BOOL, 'Bearing blocks secure'),
-    new Check(CheckTypes.BOOL, 'Chain Secure'),
+    new Check(CheckTypes.BOOL, 'Dyneema intact'),
+    new Check(CheckTypes.BOOL, 'Dyneema tight'),
+    new Check(CheckTypes.BOOL, 'Dyneema correctly wrapped around pulleys'),
     new Check(CheckTypes.BOOL, 'Rivets not sheared'),
-    new Check(CheckTypes.BOOL, 'Hard stops intact'),
-    new Check(CheckTypes.BOOL, 'Climbing hooks intact'),
-    new Check(CheckTypes.BOOL, 'Bolt in 2x1 isn\'t loose'),
-    new Check(CheckTypes.BOOL, 'Elevator motor gearbox good'),
-    new Check(CheckTypes.BOOL, 'Elevator motor brackets good'),
-
-    new Check(CheckTypes.HEADER_2, 'Shooter'),
-
+    new Check(CheckTypes.BOOL, 'Chain tight'),
     new Check(CheckTypes.BOOL, 'Motors secure'),
-    new Check(CheckTypes.BOOL, 'All bolts fastened'),
-    new Check(CheckTypes.BOOL, 'Belt tension correct, not stripped'),
-    new Check(CheckTypes.BOOL, 'Flywheel assembly moves freely'),
-    new Check(CheckTypes.BOOL, '3DP and polycarb not damaged'),
-    new Check(CheckTypes.BOOL, 'Fastened to pivot'),
-    new Check(CheckTypes.BOOL, 'Pivot chain secured'),
-    new Check(CheckTypes.BOOL, 'Wipe down rollers with IPA'),
-    new Check(CheckTypes.BOOL, 'Check ceramic coating'),
+    new Check(CheckTypes.BOOL, 'Chains tight and tensioners intact'),
+
+    new Check(CheckTypes.HEADER_2, 'Ballzooka'),
+    new Check(CheckTypes.BOOL, 'Belts tight'),
+    new Check(CheckTypes.BOOL, 'Pulleys intact'),
+    new Check(CheckTypes.BOOL, 'Rollers and wheels IPA-ed'),
+    new Check(CheckTypes.BOOL, 'Chain tight'),
+    new Check(CheckTypes.BOOL, 'Wiggle test all parts'),
+    new Check(CheckTypes.BOOL, 'Bolts secure'),
+    new Check(CheckTypes.BOOL, 'Max Spline shaft collars tight'),
+    new Check(CheckTypes.BOOL, 'Sensor screws tight'),
+
+    new Check(CheckTypes.HEADER_2, 'Climber'),
+    new Check(CheckTypes.BOOL, 'Motors secure'),
+    new Check(CheckTypes.BOOL, 'Chain tight'),
+    new Check(CheckTypes.BOOL, 'Hooks intact'),
+    new Check(CheckTypes.BOOL, 'Surgical tubing on'),
 
     new Check(CheckTypes.HEADER_2, 'Electrical'),
-
-    new Check(CheckTypes.BOOL, 'Radio bolts secured'),
+    new Check(CheckTypes.BOOL, 'Radio mount secure'),
+    new Check(CheckTypes.BOOL, 'Check all screws on CAN hub'),
     new Check(CheckTypes.BOOL, 'Wires clear of swerve modules, elevator, shooter, and intake'),
-    new Check(CheckTypes.BOOL, 'Radio ethernet secure'),
+    new Check(CheckTypes.BOOL, 'Radio ethernet lights on'),
     new Check(CheckTypes.BOOL, 'Main Breaker secure'),
     new Check(CheckTypes.BOOL, 'New battery above 115% charge'),
     new Check(CheckTypes.BOOL, 'New battery placed into robot'),
     new Check(CheckTypes.BOOL, 'Battery secure and zip-tied'),
-    new Check(CheckTypes.BOOL, 'Kraken LEDs on (orange)'),
+    new Check(CheckTypes.BOOL, 'Pigeon LEDs on (orange only)'),
+    new Check(CheckTypes.BOOL, 'Kraken LEDs on (orange only)'),
     new Check(CheckTypes.BOOL, 'Spark LEDs on (cyan or magenta)'),
-    new Check(CheckTypes.BOOL, 'Spark Max screws tight'),
-    new Check(CheckTypes.BOOL, 'Sensor screws tight'),
-    new Check(CheckTypes.BOOL, 'Limelight bolts secure'),
-    new Check(CheckTypes.BOOL, 'Limelight on'),
-    new Check(CheckTypes.BOOL, 'Check wago connections'),
-    new Check(CheckTypes.BOOL, "Limelight hot glue in tact"),
+    new Check(CheckTypes.BOOL, 'Jetson working'),
+    new Check(CheckTypes.BOOL, 'Cameras working'),
+
+    new Check(CheckTypes.HEADER_2, 'Documentation'),
+    new Check(CheckTypes.BOOL, 'Document Spares used'),
+    new Check(CheckTypes.BOOL, 'Document damaged parts still on robot'),
+    new Check(CheckTypes.BOOL, 'Any notes on the robot\'s condition or performance on separate sheet'),
 
     new Check(CheckTypes.STRING, "Battery Number"),
     new Check(CheckTypes.STRING, "Battery Charge (%)"),

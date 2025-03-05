@@ -1,3 +1,5 @@
+'use client';
+
 import {Check, CheckTypes, toJSONString} from "@/lib/checklist";
 import {Dispatch, FormEvent, SetStateAction, useEffect} from "react";
 import {loadConfig} from "@/lib/conf";

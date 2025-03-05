@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
-import {loadConfigServer} from "@/lib/conf";
+import {loadConfigServer} from "@/lib/confServer";
 import {PitList} from "@prisma/client";
 import {checklist, toJSONString} from "@/lib/checklist";
 

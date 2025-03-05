@@ -13,6 +13,7 @@ import {
 import {loadConfig} from "@/lib/conf";
 import {Check, CheckTypes, fromJSONString} from "@/lib/checklist";
 import {updateMatches} from "@/lib/updateMatches";
+import {loadConfigServer} from "@/lib/confServer";
 
 async function updatePitCheckList(formData: FormData, setChecks: any, setSigned: any) {
     const response = await fetch('/api/get-list', {
@@ -29,12 +30,13 @@ async function updatePitCheckList(formData: FormData, setChecks: any, setSigned:
 }
 
 export default function One() {
+    const config = loadConfig();
     let checklist, setCheckList: (arg0: Check[]) => void, signed, setSigned: (arg0: any) => void;
     [checklist, setCheckList] = useState<Check[]>([]);
     [signed, setSigned] = useState<string>("");
     const [matches, setMatches] = useState([]);
     const [matchInfo, setMatchInfo] = useState("");
-    const initialized = useRef(false)
+    const initialized = useRef(false);
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -68,7 +70,7 @@ export default function One() {
 
     return (
         <div className="m-6">
-            <div>Pit Maestro Pit Hawk by Team 2713 - Team {loadConfig().team} @ {loadConfig().event}</div>
+            <div>Pit Maestro Pit Hawk by Team 2713 - Team {config?.team} @ {config?.event}</div>
 
             {matches.length < 1 && <form onSubmit={onSubmit}>
                 <select name="m_type" required={true} className="text-black">

@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
-import {loadConfigServer} from "@/lib/conf";
+import {loadConfigServer} from "@/lib/confServer";
 
 export async function POST(
     request: Request
