@@ -1,7 +1,5 @@
 'use client';
 
-import {loadConfigServer} from "@/lib/confServer";
-
 export const apiKey = "uSqAJfiJwCciUTUQGRKjcSqdnq2p33fUWBseQePtdjS7bNvtbaPZ0nh7yUPdVbi0";
 
 const config: {
@@ -15,16 +13,18 @@ const config: {
 };
 
 export function loadConfig() {
-    let xhttp = new XMLHttpRequest();
+    if (typeof window !== "undefined") {
+        let xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "/api/get-conf", false);
-    xhttp.send();
+        xhttp.open("GET", "/api/get-conf", false);
+        xhttp.send();
 
-    let j = JSON.parse(xhttp.responseText);
+        let j = JSON.parse(xhttp.responseText);
 
-    config.event = j.event;
-    config.team = j.team;
-
+        config.event = j.event;
+        config.team = j.team;
+    }
     return config;
+
 }
 
