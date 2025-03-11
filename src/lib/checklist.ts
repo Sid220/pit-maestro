@@ -64,13 +64,14 @@ export const checklist = [
 
     new Check(CheckTypes.HEADER_2, 'Ballzooka'),
     new Check(CheckTypes.BOOL, 'Belts tight'),
-    new Check(CheckTypes.BOOL, 'Pulleys intact'),
+    new Check(CheckTypes.BOOL, 'Pulleys and gears intact'),
     new Check(CheckTypes.BOOL, 'Rollers and wheels IPA-ed'),
     new Check(CheckTypes.BOOL, 'Chain tight'),
     new Check(CheckTypes.BOOL, 'Wiggle test all parts'),
     new Check(CheckTypes.BOOL, 'Bolts secure'),
     new Check(CheckTypes.BOOL, 'Max Spline shaft collars tight'),
     new Check(CheckTypes.BOOL, 'Sensor screws tight'),
+    new Check(CheckTypes.BOOL, 'Coral vortex shaft bolt tight'),
 
     new Check(CheckTypes.HEADER_2, 'Climber'),
     new Check(CheckTypes.BOOL, 'Motors secure'),
