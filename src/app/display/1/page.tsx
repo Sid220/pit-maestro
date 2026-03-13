@@ -31,22 +31,38 @@ function updateRankings(setRankings: any) {
     })
 }
 
+function updateWebcast(setWebcast: any) {
+    fetch("https://www.thebluealliance.com/api/v3/event/" + loadConfig().event, {
+        headers: {
+            "X-TBA-Auth-Key": loadConfig().apiKey
+        }
+    }).then(r => {
+        r.json().then((j: any) => {
+            let webcast = j["webcasts"].find((w: any) => w["type"] === "youtube");
+            if (webcast) {
+                setWebcast(webcast);
+            }
+        })
+    })
+}
+
 export default function One() {
-    let rankings, setRankings, ratings, setRatings, matches, setMatches, matchesPlayed, setMatchesPlayed;
-    let streamChannel = 'nefirst_blue';
+    let rankings, setRankings, ratings, setRatings, matches, setMatches, matchesPlayed, setMatchesPlayed, webcast, setWebcast;
     [rankings, setRankings] = useState([]);
     [matches, setMatches] = useState([]);
     [ratings, setRatings] = useState([0, 0, 0]);
     [matchesPlayed, setMatchesPlayed] = useState(0);
+    [webcast, setWebcast] = useState(null);
 
     useEffect(() => {
         const getData = () => {
             updateRankings(setRankings);
             updateMatches(setMatches);
+            updateWebcast(setWebcast);
         }
         getData();
         setInterval(getData, 1000 * 60);
-    }, []);
+    }, [setMatches, setRankings, setWebcast]);
 
     useEffect(() => {
         let record = rankings.find((a: any) => {
@@ -102,9 +118,9 @@ export default function One() {
                     })}
                 </div>
                 <div className="col-span-2">
-                    <iframe className="w-[60vw] h-96"
-                            frameBorder="0" allowFullScreen={true} scrolling="no"
-                            src={"https://player.twitch.tv/?channel=" + streamChannel + "&parent=pit-maestro.vercel.app"}></iframe>
+                    {webcast && <iframe className="w-[60vw] h-96"
+                            style={{border: "none"}} allow="fullscreen"
+                            src={"https://www.youtube.com/embed/" + (webcast as any)["channel"]}></iframe>}
                 </div>
             </div>
             <iframe src={`https://frc.nexus/en/event/${loadConfig().event}/team/${loadConfig().team}`} className={"w-full h-[500px]"}/>
